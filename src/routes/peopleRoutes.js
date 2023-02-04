@@ -16,7 +16,7 @@ router.get('/', async (_req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const [[result]] = await peopleDB.findById(id);
+    const [result] = await peopleDB.findById(id);
     if (result) {
       res.status(200).json(result);
     } else {
