@@ -16,7 +16,7 @@ router.get('/', async (_req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const [result] = await peopleDB.findById(id);
+    const [[result]] = await peopleDB.findById(id);
     if (result) {
       res.status(200).json(result);
     } else {
@@ -32,7 +32,6 @@ router.post('/', async (req, res) => {
   const person = req.body;
   try {
     const [result] = await peopleDB.insert(person);
-    console.log(result);
     res.status(201).json({ message: `Pessoa cadastrada com sucesso com o id ${result.insertId}` });
   } catch (error) {
     console.log(error);

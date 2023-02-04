@@ -61,7 +61,7 @@ describe('Testando os endpoins de people', function () {
   });
 
   it('Testando a listagem da pessoa com o id 1', async function () {
-    sinon.stub(connection, 'execute').resolves([peopleList[0]]);
+    sinon.stub(connection, 'execute').resolves([[peopleList[0]]]);
 
     const response = await chai
       .request(app)
